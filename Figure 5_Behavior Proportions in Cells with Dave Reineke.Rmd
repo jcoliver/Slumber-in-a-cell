@@ -1,0 +1,97 @@
+# This script makes a stacked boxplot showing the proportions of behaviors at any given time.
+# Kathryn Busby and Dave Reineke
+# 2/26/2020
+# mkbusby@email.arizona.edu
+
+# Import libraries.
+
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(extrafont)
+library(plyr)
+library(scales)
+library(reshape2)
+library(lubridate)
+
+# Import data file.
+
+data <- read.csv(file="[Insert path to data file Behavior Census Totals.csv here]",
+                 header = TRUE,
+                 sep = ",")
+
+# To reorder the plot so that it uses whole datetimes instead of just hours and minutes,
+# we need to create a date-time object and use it to sort.
+# The Lubridate package is tidyverse adjacent and accomplishes this.
+
+data$time2 <- data$time
+
+data$time <- hm(data$time2)
+
+# drop the seconds
+data$time <- str_remove_all(data$time, " 0S")
+
+# manually add in 0H where missing
+data[93:96,"time"] <- "00H 10M"
+data[97:100,"time"] <- "00H 23M"
+data[169:172,"time"] <- "00H 19M"
+data[173:176,"time"] <- "00H 52M"
+
+# manually add zeros where needed
+data[9:12,"time"] <- "14H 01M"
+data[21:24,"time"] <- "15H 09M"
+data[29:32,"time"] <- "16H 04M"
+data[45:48,"time"] <- "17H 02M"
+data[61:64,"time"] <- "20H 05M"
+data[101:104,"time"] <- "01H 57M"
+data[105:108,"time"] <- "02H 05M"
+data[109:112,"time"] <- "02H 07M"
+data[113:116,"time"] <- "04H 15M"
+data[117:120,"time"] <- "04H 31M"
+data[121:124,"time"] <- "05H 02M"
+data[133:136,"time"] <- "19H 04M"
+data[177:180,"time"] <- "01H 26M"
+data[185:188,"time"] <- "11H 08M"
+
+t.data <- data %>%
+  mutate(datetime=make_datetime(year, month, date))
+
+t.data$datetime <- paste(data$date, data$time)
+
+# order times
+t.data$order.var  <- factor(seq(1:204), labels=t.data$time2)
+
+# Use melt to get data into long format for stacking behavior categories.
+
+melt.data <- t.data[,-c(6:8,14)]
+melt.data <- melt(melt.data, id=c("year", "month", "date", "day.night", "time", "datetime","order.var"))
+melt.data$datetime <- as.factor(melt.data$datetime)
+
+# Lay down the bones of the plot:
+
+barplot <- ggplot() + geom_bar(aes(y = melt.data$value,
+                                   x = melt.data$order.var, fill=melt.data$variable),
+                               data = melt.data,
+                               stat="identity")
+  # This would put a line of the sample sizes across the top, but I got rid of that.
+  #geom_text(aes(t.data$datetime, y=17.4, label = data$total), position = position_dodge(.9), size=3)
+
+# Customize colors: c("black", "cadetblue3", "darkgoldenrod1", "firebrick1")
+# Customize labels and title
+# Customize theme (to get rid of default gray grid)
+
+barplot + scale_fill_manual(name="Behavior", values=c("black", "white","cadetblue3", "darkgoldenrod1", "firebrick1"),
+                            labels=c("abdomen dv", " ", "cleaner", "feeder", "heater")) +
+  labs(x="Timestamp", y="Number of Occurrences of Behavior") +
+  ggtitle("Behaviors Occurring Across Time") +
+  scale_y_continuous(breaks=c(1:17)) +
+  theme(plot.margin=unit(c(0.5,0,0.5,1),"cm"), panel.background = element_blank(),
+        plot.title = element_text(vjust=2, size=16),
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Save the output plot!
+
+ggsave(filename="[Insert path to output file here]", height=9, width=12, units="in")
+
+
+

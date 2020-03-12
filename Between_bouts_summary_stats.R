@@ -5,7 +5,7 @@
 
 # Bring in Inside Cells data:
 
-mydata <- read.csv(file = "~/Documents/Science Projects/Inside Cells/2019/Data/20191015_New Clicks Only.csv",
+mydata <- read.csv(file = "[Insert path to New Clicks Only.csv here]",
                    header = TRUE,
                    sep = ",")
 
@@ -215,7 +215,7 @@ LBB.non.dv.n.sum <- sum(as.numeric(mean.list$LBB.n[which(mean.list$Behavior!="ab
 
 # To finish everything up nicely, let's print off the results in a tidy, descriptive output file.
 
-sink(file = "~/Documents/Science Projects/Inside Cells/2020/Output/Summary Stats Within Bee.txt")
+sink(file = "[Insert desired output path for a text file here]")
 
 cat("The following data frame contains the means of event separations within and between bouts, and corresponding sample sizes (n).\n
     For Ev.Sep column, we are looking only at <=1000 ms, and for LBB we are only look at >=10000 ms:\n")

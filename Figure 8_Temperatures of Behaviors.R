@@ -2,6 +2,7 @@
 # temperature for bees across all behaviors.
 # Kathryn Busby
 # February 26, 2020
+# mkbusby@email.arizona.edu
 
 # Install packages: Uncomment this if you need to install the two packages listed below.
 

@@ -1,6 +1,6 @@
 # This script makes boxplots of the separations between gaster pumps, sorted by behavior.
 # This script only makes the top half of the figure (displaying those event separations over 10s).
-# Execute the script for Figure 7a_Event Sep Boxplot Less than 10s.R for the other half.
+# Execute the script for Figure 7b_Event Sep Boxplot Less than 10s.R for the other half.
 # Kathryn Busby
 # 03/12/2020
 # mkbusby@email.arizona.edu

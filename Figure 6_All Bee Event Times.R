@@ -1,6 +1,7 @@
 # This script makes a plot of all bee gaster ventilation event times in seconds.
 # Kathryn Busby
 # February 26, 2020
+# mkbusby@email.arizona.edu
 
 # Packages: Uncomment the following line if you need to install the package.
 

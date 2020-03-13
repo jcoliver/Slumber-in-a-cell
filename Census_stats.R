@@ -10,7 +10,7 @@ library(lubridate)
 
 # Bring in the data.
 
-data <- read.csv(file="[Insert your path to Behavior Census.csv here]",
+data <- read.csv(file="[Insert your path to Census.csv here]",
                  header = TRUE,
                  sep = ",")
 

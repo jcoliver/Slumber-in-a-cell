@@ -16,7 +16,7 @@ library(lubridate)
 
 # Import data file.
 
-data <- read.csv(file="[Insert path to data file Census.csv here]",
+data <- read.csv(file="[Insert your path to Census.csv here]",
                  header = TRUE,
                  sep = ",")
 
@@ -73,6 +73,8 @@ barplot <- ggplot() + geom_bar(aes(y = melt.data$value,
                                    x = melt.data$order.var, fill=melt.data$variable),
                                data = melt.data,
                                stat="identity")
+  # This would put a line of the sample sizes across the top, but I got rid of that.
+  #geom_text(aes(t.data$datetime, y=17.4, label = data$total), position = position_dodge(.9), size=3)
 
 # Customize colors: c("black", "cadetblue3", "darkgoldenrod1", "firebrick1")
 # Customize labels and title

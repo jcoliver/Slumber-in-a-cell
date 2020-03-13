@@ -47,24 +47,24 @@ hist(night$feeder.count)
 hist(day$heater.count)
 hist(night$heater.count)
 
-# Use Chi-square tests to compare between each behavior except for feeders.
+# Use Kolmogorov-Smirnov tests to compare between each behavior except for feeders.
 # For feeders there was not a large enough sample size to compare counts, and they were all at night.
 # Use the absolute number of each behavior. Do 3 tests of absolute counts.
 
-chisq.test(x=day$total.beh[which(t.data$behavior=="abdomen dv")],
+ks.test(x=day$total.beh[which(t.data$behavior=="abdomen dv")],
            y=night$total.beh[which(t.data$behavior=="abdomen dv")])
-chisq.test(x=day$total.beh[which(t.data$behavior=="cleaner")],
+ks.test(x=day$total.beh[which(t.data$behavior=="cleaner")],
            y=night$total.beh[which(t.data$behavior=="cleaner")])
-chisq.test(x=day$total.beh[which(t.data$behavior=="heater")],
+ks.test(x=day$total.beh[which(t.data$behavior=="heater")],
            y=night$total.beh[which(t.data$behavior=="heater")])
 
 # Compare between each behavior except for feeders.
 # Use the proportion of each behavior instead of a total.
 # Do 3 tests of proportions.
 
-chisq.test(x=day$proportion[which(t.data$behavior=="abdomen dv")],
+ks.test(x=day$proportion[which(t.data$behavior=="abdomen dv")],
            y=night$proportion[which(t.data$behavior=="abdomen dv")])
-chisq.test(x=day$proportion[which(t.data$behavior=="cleaner")],
+ks.test(x=day$proportion[which(t.data$behavior=="cleaner")],
            y=night$proportion[which(t.data$behavior=="cleaner")])
-chisq.test(x=day$proportion[which(t.data$behavior=="heater")],
+ks.test(x=day$proportion[which(t.data$behavior=="heater")],
            y=night$proportion[which(t.data$behavior=="heater")])

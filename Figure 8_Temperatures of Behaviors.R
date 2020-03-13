@@ -14,7 +14,7 @@
 library(ggplot2)
 library(dplyr)
 
-mydata <- read.csv(file = "[Temperatures.csv here]",
+mydata <- read.csv(file = "[Insert path to Temperatures.csv here]",
                    header = TRUE,
                    sep = ",")
 

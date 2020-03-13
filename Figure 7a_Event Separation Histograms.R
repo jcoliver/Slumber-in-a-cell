@@ -5,7 +5,7 @@
 
 # Bring in Inside Cells data:
 
-mydata <- read.csv(file = "~/Documents/Science Projects/Inside Cells/2019/Data/20191015_New Clicks Only.csv",
+mydata <- read.csv(file = "[Insert your path to New Clicks Only.csv here]",
                    header = TRUE,
                    sep = ",")
 

@@ -5,7 +5,7 @@
 
 # Bring in Inside Cells data:
 
-mydata <- read.csv(file = "[Insert path to New Clicks Only.csv here]",
+mydata <- read.csv(file = "[Insert path to Vent_times.csv here]",
                    header = TRUE,
                    sep = ",")
 
@@ -19,12 +19,12 @@ mydata <- read.csv(file = "[Insert path to New Clicks Only.csv here]",
 # Also note: column LBB does NOT select everything greater than 10 seconds. Rather, it eliminates isolated
 # clicks. In other words, user must apply an additional filter to look between bouts.
 
-mydata <- mydata[,c(1,2,5,6,9)]
+mydata <- mydata[,c(1,2,5,6,8)]
 newdata <- na.omit(mydata)
-colnames(newdata) <- c("Behavior", "Bee", "EvTime..3", "EvSep..3", "LBB")
-colnames(mydata) <- c("Behavior", "Bee", "EvTime..3", "EvSep..3", "LBB")
+colnames(newdata) <- c("Behavior", "Bee", "EvTimeby3", "EvSepby3", "LBB")
+colnames(mydata) <- c("Behavior", "Bee", "EvTimeby3", "EvSepby3", "LBB")
 
-summary(newdata$EvSep..3)
+summary(newdata$EvSepby3)
 summary(newdata)
 
 mean(newdata$LBB)
@@ -36,11 +36,11 @@ mean(newdata$LBB)
 # stats on just that behavior.
 # The last line will index to all behaviors EXCEPT dv.
 
-heaters <- mydata$EvSep..3 [which(mydata$Behavior == "heater")]
-feeders <- mydata$EvSep..3 [which(mydata$Behavior == "feeder")]
-cleaners <- mydata$EvSep..3 [which(mydata$Behavior == "cleaner")]
-dv <- mydata$EvSep..3 [which(mydata$Behavior == "abdomen dv")]
-non.dv <- mydata$EvSep..3 [-which(mydata$Behavior == "abdomen dv")]
+heaters <- mydata$EvSepby3 [which(mydata$Behavior == "heater")]
+feeders <- mydata$EvSepby3 [which(mydata$Behavior == "feeder")]
+cleaners <- mydata$EvSepby3 [which(mydata$Behavior == "cleaner")]
+dv <- mydata$EvSepby3 [which(mydata$Behavior == "abdomen dv")]
+non.dv <- mydata$EvSepby3 [-which(mydata$Behavior == "abdomen dv")]
 
 # The following set references LBB to look between bouts, and should exclude NAs. So reference newdata.
 
@@ -160,8 +160,8 @@ i <- 1
 for (i in 1:length(bee.list)) {
   Bee <- as.character(bee.list[i])
   Behavior <- as.character(unique(newdata$Behavior[which(newdata$Bee == bee.list[i])]))
-  Ev.Sep <- mean(na.omit(mydata$EvSep..3[which((mydata$Bee == bee.list[i]) & (mydata$EvSep..3 <= 1000))]))
-  Ev.Sep.n <- length(mydata$Bee[which((mydata$Bee==bee.list[i]) & (mydata$EvSep..3 <= 1000))])
+  Ev.Sep <- mean(na.omit(mydata$EvSepby3[which((mydata$Bee == bee.list[i]) & (mydata$EvSepby3 <= 1000))]))
+  Ev.Sep.n <- length(mydata$Bee[which((mydata$Bee==bee.list[i]) & (mydata$EvSepby3 <= 1000))])
   LBB <- mean(newdata$LBB[which((newdata$Bee == bee.list[i]) & (newdata$LBB >= 10000))])
   LBB.n <- length(newdata$Bee[which((newdata$Bee==bee.list[i]) & (newdata$LBB >= 10000))])
   new.line <- c(Bee, Behavior, Ev.Sep, Ev.Sep.n, LBB, LBB.n)

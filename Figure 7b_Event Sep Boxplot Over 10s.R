@@ -12,7 +12,7 @@ library(ggplot2)
 
 # Bring in Inside Cells data:
 
-newdata <- read.csv(file = "[Insert path to New Clicks Only b.csv here.]",
+newdata <- read.csv(file = "[Insert path to Vent_times.csv here.]",
                                      header = TRUE,
                                      sep = ",")
 

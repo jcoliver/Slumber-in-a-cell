@@ -15,8 +15,7 @@ Install.packages(“tidyverse”)
 Running the tests
 For Mac, use Cmd + Enter to execute a line of code. For Windows, use Ctrl + Enter. Execute each line or execute it all at once by selecting all of the script and hitting the above keys. Some plots and text files will output as saved files. Indicate your desired path for saving the files, then look for them in that directory on your computer. Other results will be output in the terminal, and should be viewed as they are executed line-by-line.
 
-Built With
-•	RStudio
+Built With RStudio
 
 Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.

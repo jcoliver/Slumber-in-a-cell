@@ -60,7 +60,7 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 Attribution
 This Code of Conduct is from PurpleBooth, which adapted it from the Contributor Covenant, version 1.4, available at http://contributor-covenant.org/version/1/4
 
-Authors
+Authors:
 Kathryn Busby – Wrote and designed scripts and statistical tests – github.com/katbeescience, and Barrett Klein – Design of figures and statistical tests – pupating.org
 
 License

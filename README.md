@@ -61,12 +61,11 @@ Attribution
 This Code of Conduct is from PurpleBooth, which adapted it from the Contributor Covenant, version 1.4, available at http://contributor-covenant.org/version/1/4
 
 Authors
-•	Kathryn Busby – Wrote and designed scripts and statistical tests – github.com/katbeescience
-•	Barrett Klein – Design of figures and statistical tests – pupating.org
+Kathryn Busby – Wrote and designed scripts and statistical tests – github.com/katbeescience, and Barrett Klein – Design of figures and statistical tests – pupating.org
 
 License
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
 Acknowledgments
-Thanks to Dave Reineke, Jeff Oliver, and Keaton Wilson contributed ideas, code, and much consultation to this project.
+Thanks to Dave Reineke, Jeff Oliver, and Keaton Wilson, who contributed ideas, code, and much consultation to this project.
 

@@ -5,7 +5,7 @@
 
 # Bring in Inside Cells data:
 
-mydata <- read.csv(file = "[Insert your path to New Clicks Only.csv here]",
+mydata <- read.csv(file = "[Insert your path to Vent_times.csv here]",
                    header = TRUE,
                    sep = ",")
 
@@ -21,8 +21,8 @@ mydata <- read.csv(file = "[Insert your path to New Clicks Only.csv here]",
 
 mydata <- mydata[,c(1,2,5,6,9)]
 newdata <- na.omit(mydata)
-colnames(newdata) <- c("Behavior", "Bee", "EvTime..3", "EvSep..3", "LBB")
-colnames(mydata) <- c("Behavior", "Bee", "EvTime..3", "EvSep..3", "LBB")
+colnames(newdata) <- c("Behavior", "Bee", "EvTimeby3", "EvSepby3", "LBB")
+colnames(mydata) <- c("Behavior", "Bee", "EvTimeby3", "EvSepby3", "LBB")
 
 # To plot event separations in histograms, first index to separate behaviors.
 # For looking within bouts, we don't want to exclude NAs, so reference mydata instead of newdata.
@@ -30,10 +30,10 @@ colnames(mydata) <- c("Behavior", "Bee", "EvTime..3", "EvSep..3", "LBB")
 # stats on just that behavior.
 # The last line will index to all behaviors EXCEPT dv.
 
-heaters <- mydata$EvSep..3 [which(newdata$Behavior == "heater")]
-feeders <- mydata$EvSep..3 [which(newdata$Behavior == "feeder")]
-cleaners <- mydata$EvSep..3 [which(newdata$Behavior == "cleaner")]
-dv <- newdata$EvSep..3 [which(newdata$Behavior == "abdomen dv")]
+heaters <- mydata$EvSepby3 [which(newdata$Behavior == "heater")]
+feeders <- mydata$EvSepby3 [which(newdata$Behavior == "feeder")]
+cleaners <- mydata$EvSepby3 [which(newdata$Behavior == "cleaner")]
+dv <- newdata$EvSepby3 [which(newdata$Behavior == "abdomen dv")]
 
 # Each of the following lines makes a histogram of one behavior.
 

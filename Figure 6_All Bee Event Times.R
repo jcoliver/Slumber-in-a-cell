@@ -10,7 +10,7 @@
 # Bring in file and clean up:
 
 library(ggplot2)
-mydata <- read.csv(file = "[Insert path to All Event Times.csv data file here]",
+mydata <- read.csv(file = "[Insert path to Vent_times.csv data file here]",
                    header = TRUE,
                    sep = ",")
 
@@ -20,7 +20,7 @@ newdata <- mydata[,c(1,2,5)]
   
 # We want the times to be presented in seconds, not milliseconds.
 
-newdata$EvTimeby3 <- newdata$EvTime..3/1000
+newdata$EvTimeby3 <- newdata$EvTimeby3/1000
 
 # To sort the bees by behavior, then duration, we start by finding the max duration for each unique ID.
 # Make a new column and populate it with the max event time for that bee.
@@ -32,7 +32,7 @@ i <- 1
 newdata$max <- c(1:6897)
 
 for (i in 1:length(unique.ID)) {
-  max <- max(newdata$EvTime..3[which(newdata$Bee == unique.ID[i])])
+  max <- max(newdata$EvTimeby3[which(newdata$Bee == unique.ID[i])])
   newdata$max[which(newdata$Bee == unique.ID[i])] <- rep(max, length(newdata$Bee[which(newdata$Bee == unique.ID[i])]))
   i <- i + 1
 }

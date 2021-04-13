@@ -24,6 +24,8 @@ data <- read.csv(file="[Insert your path to Census.csv here]",
 # we need to create a date-time object and use it to sort.
 # The Lubridate package is tidyverse adjacent and accomplishes this.
 
+# TODO: JCO. Could this be combined in one step?
+# data$time <- hm(data$time)
 data$time2 <- data$time
 
 data$time <- hm(data$time2)
